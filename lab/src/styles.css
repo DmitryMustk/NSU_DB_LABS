@@ -24,9 +24,9 @@ body.dark-mode {
 }
 
 header {
-    background: #34495e; /* Более светлый фон для заголовка */
+    background: #34495e; 
     color: #ffffff;
-    padding: 15px 0; /* Увеличены отступы */
+    padding: 15px 0; 
     text-align: center;
 }
 
@@ -61,7 +61,7 @@ th, td {
 footer {
     text-align: center;
     padding: 10px 0;
-    background: #34495e; /* Цвет фона для футера */
+    background: #34495e; 
     color: #ffffff;
     width: 100%;
     bottom: 0;
@@ -73,34 +73,34 @@ body {
     margin: 0;
     padding: 20px;
     transition: background-color 0.3s, color 0.3s;
-    text-align: center; /* Центрирование текста */
+    text-align: center; 
 }
 
 button {
-    background-color: #35424a; /* Цвет фона кнопки */
-    color: white;              /* Цвет текста */
-    border: none;              /* Без рамки */
-    padding: 10px 20px;       /* Отступы внутри кнопки */
-    cursor: pointer;           /* Указатель курсора */
-    font-size: 16px;          /* Размер шрифта */
-    border-radius: 5px;       /* Скругление углов */
-    transition: background-color 0.3s, transform 0.3s; /* Плавный переход */
-    margin-top: 20px;         /* Отступ сверху */
+    background-color: #35424a; 
+    color: white;             
+    border: none;            
+    padding: 10px 20px;     
+    cursor: pointer;       
+    font-size: 16px;          
+    border-radius: 5px;      
+    transition: background-color 0.3s, transform 0.3s; 
+    margin-top: 20px;         
 }
 
 button:hover {
-    background-color: #47a447; /* Цвет кнопки при наведении */
-    transform: scale(1.05);    /* Увеличение размера при наведении */
+    background-color: #47a447; 
+    transform: scale(1.05);    
 }
 
 button:active {
-    transform: scale(0.95);    /* Уменьшение размера при нажатии */
+    transform: scale(0.95);    
 }
 
 
 a {
     text-decoration: none;
-    color: #e74c3c; /* Яркий цвет для ссылок */
+    color: #e74c3c; 
 }
 
 a:visited {
@@ -113,58 +113,74 @@ a:hover {
 }
 
 nav {
-    margin-top: 20px; /* Отступ сверху для навигации */
+    margin-top: 20px;
 }
 
 nav ul {
-    list-style-type: none; /* Убираем маркеры списка */
-    padding: 0; /* Убираем отступы */
+    list-style-type: none; 
+    padding: 0; 
 }
 
 nav li {
-    margin: 10px 0; /* Отступы между элементами списка */
+    margin: 10px 0; 
 }
 
 .nav-link {
-    display: block; /* Блок для ссылки, чтобы занимала всю ширину */
-    background-color: #35424a; /* Цвет фона ссылки */
-    color: white; /* Цвет текста */
-    padding: 15px 20px; /* Отступы внутри ссылки */
-    border-radius: 5px; /* Скругление углов */
-    text-decoration: none; /* Убираем подчеркивание */
-    transition: background-color 0.3s, transform 0.3s; /* Плавный переход */
-    text-align: left; /* Выравнивание текста влево */
+    display: block; 
+    background-color: #35424a; 
+    color: white; 
+    padding: 15px 20px; 
+    border-radius: 5px; 
+    text-decoration: none; 
+    transition: background-color 0.3s, transform 0.3s; 
+    text-align: left; 
 }
 
 .nav-link:hover {
-    background-color: #47a447; /* Цвет фона при наведении */
-    transform: scale(1.02); /* Увеличение размера при наведении */
+    background-color: #47a447; 
+    transform: scale(1.02); 
 }
 
 .nav-link:active {
-    transform: scale(0.95); /* Уменьшение размера при нажатии */
+    transform: scale(0.95); 
 }
 
-/* Пометка для активного элемента */
 .nav-link.active {
-    border-left: 5px solid #47a447; /* Левый бордер для активного элемента */
-    padding-left: 15px; /* Увеличенный отступ для пометки */
+    border-left: 5px solid #47a447; 
+    padding-left: 15px; 
 }
 
 .student-card {
     border-radius: 8px;
+	color: lightgrey;
 	background-color: #35424a;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px; /* Увеличиваем отступы */
+    padding: 30px; 
     margin: 20px auto;
-    max-width: 500px; /* Увеличиваем максимальную ширину карточки */
-    text-align: center; /* Центрирование текста внутри карточки */
+    max-width: 500px; 
+    text-align: center; 
 }
 
 .photo-placeholder {
-    width: 150px; /* Ширина места для фото */
-    height: 150px; /* Высота места для фото (квадрат) */
-    background-color: #ddd; /* Цвет фона для фото */
+    width: 150px; 
+    height: 150px; 
+    background-color: #ddd; 
     border-radius: 8px;
-    margin: 0 auto 15px; /* Центрируем с помощью auto */
+    margin: 0 auto 15px; 
+}
+
+
+.student-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; 
+            padding: 0;
+            margin: 0;
+            list-style: none; 
+}
+
+.leader {
+	border: 2px solid #e74c3c; 
+	background-color: #ffebee; 
 }

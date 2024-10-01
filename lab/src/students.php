@@ -1,12 +1,12 @@
 <html>
 <head>
     <meta charset='utf-8'>
-    <title>Студенты</title>
+    <title>Students</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Все студенты</h1>
+        <h1>Students list</h1>
     </header>
     
     <?php
@@ -23,15 +23,15 @@
             $stmt = $pdo->prepare($Q);
             $stmt->execute();
         } catch (PDOException $e) {
-            echo "Ошибка подключения: " . $e->getMessage();
+            echo "DB connection error: " . $e->getMessage();
         }
     ?>
     <table>
         <thead>
 			<tr>
 				<th>#</th>
-                <th>Фамилия</th>
-                <th>Имя</th>
+                <th>LastName</th>
+                <th>FirstName</th>
             </tr>
         </thead>
         <tbody>
@@ -49,10 +49,10 @@
         </tbody>
     </table>
 
-	<p><button id="backButton" onclick="window.location.href='index.html'">Назад на главную</button></p>
+	<p><button id="backButton" onclick="window.location.href='index.html'">Back to home</button></p>
 
     <footer>
-        <p>&copy; 2024 Все права защищены</p>
+        <p>&copy; 2024 All rights received</p>
     </footer>
     <script src="script.js"></script>
 </body>

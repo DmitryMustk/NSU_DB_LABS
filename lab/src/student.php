@@ -1,13 +1,13 @@
 <html>
 <head>
     <meta charset='utf-8'>
-    <title>Студент</title>
+    <title>Student</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <div class="wrapper">
 <body>
     <header>
-        <h1>Листок студента</h1>
+        <h1>Student card</h1>
     </header>
     <main class="main"> 
     <div class="student-card">
@@ -30,9 +30,9 @@
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 if ($row) {
-                    echo "<div class='photo-placeholder'></div>"; // Место для фото
+                    echo "<div class='photo-placeholder'></div>"; 
                     echo "<h2>{$row['LastName']} {$row['FirstName']}</h2>";
-                    echo "<p>Группа: <a href='group.php?GroupID={$row['GroupID']}'>{$row['GroupID']}</a></p>";
+                    echo "<p>Group:: <a href='group.php?ID={$row['GroupID']}'>{$row['GroupID']}</a></p>";
 
                     $Q = "SELECT c.Title FROM Enrollments e 
                           INNER JOIN Courses c ON e.CourseID = c.ID 
@@ -40,25 +40,25 @@
                     $stmt = $pdo->prepare($Q);
                     $stmt->execute(['studentID' => $studentID]);
 
-                    echo "<h3>Факультативы:</h3>";
+                    echo "<h3>Courses:</h3>";
                     echo "<ul>";
                     while ($course = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         echo "<li>{$course['Title']}</li>";
                     }
                     echo "</ul>";
                 } else {
-                    echo "<p>Студент не найден.</p>";
+                    echo "<p>Can't find the student :(</p>";
                 }
             } catch (PDOException $e) {
-                echo "Ошибка: " . $e->getMessage();
+                echo "DB connection error: " . $e->getMessage();
             }
         ?>
     </div>
     
-	<p><button id="backButton" onclick="window.location.href='students.php'">Назад к студентам</button></p>
+	<p><button id="backButton" onclick="window.location.href='students.php'">Back to students</button></p>
        </main>
     <footer>
-        <p>&copy; 2024 Все права защищены</p>
+        <p>&copy; 2024 All rights received</p>
     </footer>
     <script src="script.js"></script>
 </body>
