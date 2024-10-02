@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 <head>
     <meta charset='utf-8'>
     <title>Students</title>
@@ -54,7 +54,6 @@
     <footer>
         <p>&copy; 2024 All rights received</p>
     </footer>
-    <script src="script.js"></script>
 </body>
 </html>
 

@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 <head>
     <meta charset='utf-8'>
     <title>Student</title>
@@ -28,27 +28,38 @@
                 $stmt->execute(['studentID' => $studentID]);
 
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
+				if (!$row) {
+					return;
+				}
 
-                if ($row) {
-                    echo "<div class='photo-placeholder'></div>"; 
-                    echo "<h2>{$row['LastName']} {$row['FirstName']}</h2>";
-                    echo "<p>Group:: <a href='group.php?ID={$row['GroupID']}'>{$row['GroupID']}</a></p>";
+                echo "<div class='photo-placeholder'></div>"; 
+                echo "<h2>{$row['LastName']} {$row['FirstName']}</h2>";
+                echo "<p>Group: <a href='group.php?ID={$row['GroupID']}'>{$row['GroupID']}</a></p>";
 
-                    $Q = "SELECT c.Title FROM Enrollments e 
-                          INNER JOIN Courses c ON e.CourseID = c.ID 
-                          WHERE e.StudentID = :studentID";
-                    $stmt = $pdo->prepare($Q);
-                    $stmt->execute(['studentID' => $studentID]);
+				$Q = "SELECT 
+							c.ID as CourseID,
+							c.Title
+					  FROM 
+							Enrollments e 
+					  INNER JOIN 
+							Courses c ON e.CourseID = c.ID 
+					  WHERE 
+							e.StudentID = :studentID";
+                $stmt = $pdo->prepare($Q);
+                $stmt->execute(['studentID' => $studentID]);
 
-                    echo "<h3>Courses:</h3>";
-                    echo "<ul>";
-                    while ($course = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<li>{$course['Title']}</li>";
-                    }
-                    echo "</ul>";
-                } else {
-                    echo "<p>Can't find the student :(</p>";
-                }
+                echo "<h3>Courses:</h3>";
+				echo "<ul>";
+				
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+					echo "<li>
+							<a href='course.php?ID={$row['CourseID']}'>
+								{$row['Title']}
+							</a>
+						 </li>";
+				}
+
+                echo "</ul>";
             } catch (PDOException $e) {
                 echo "DB connection error: " . $e->getMessage();
             }
@@ -60,7 +71,6 @@
     <footer>
         <p>&copy; 2024 All rights received</p>
     </footer>
-    <script src="script.js"></script>
 </body>
 </div>
 </html>
