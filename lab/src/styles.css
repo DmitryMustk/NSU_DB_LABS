@@ -204,3 +204,12 @@ nav li {
 .back-button:hover {
     background-color: #3b8f3b;
 }
+
+p {
+	text-align: center;
+}
+
+#back-button {
+	display: inline-block;
+	margin-top: 20px;
+}

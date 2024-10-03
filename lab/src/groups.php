@@ -21,10 +21,11 @@
     			    $pdo = new PDO("mysql:host=" . $DB_HOST . ";dbname=" . $DB_NAME, $DB_USER, $DB_PASSWORD);
     			    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    			    $Q = "SELECT 
+					$Q = "SELECT	
     			              g.ID AS GroupID, 
-    			              f.Name AS FacultyName, 
-    			              CONCAT(s.FirstName, ' ', s.LastName) AS LeaderName
+							  f.Name AS FacultyName, 
+							  s.ID AS LeaderID,
+							  CONCAT(s.FirstName, ' ', s.LastName) AS LeaderName
     			          FROM 
     			              Groups g
     			          INNER JOIN 
@@ -48,7 +49,7 @@
     			        echo "<tr>
     			                <td><a href='group.php?ID={$row['GroupID']}'>{$row['GroupID']}</td></a>>
     			                <td>{$row['FacultyName']}</td>
-    			                <td>{$row['LeaderName']}</td>
+    			                <td><a href='student.php?ID={$row['LeaderID']}'>{$row['LeaderName']}</a></td>
     			              </tr>";
     			    }
     			    echo '</tbody>';
