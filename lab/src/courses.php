@@ -4,9 +4,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <style>
-
-    </style>
 </head>
 
 <body>
@@ -26,23 +23,38 @@
 		            $pdo = new PDO("mysql:host=" . $DB_HOST . "; dbname=" . $DB_NAME, $DB_USER, $DB_PASSWORD);
 		            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		
-		            $query = "SELECT ID, Title FROM Courses";
+					$query = "SELECT
+								ID, Title
+							  FROM Courses";
 		            $stmt = $pdo->prepare($query);
-		            $stmt->execute();
-		
-		            echo '<ul class="course-list">';
-		            while ($course = $stmt->fetch(PDO::FETCH_ASSOC)) {
-		                echo "<li><a href='course.php?ID={$course['ID']}'>{$course['Title']}</a></li>";
-		            }
-		            echo '</ul>';
-		
-		        } catch (PDOException $e) {
-		            echo "<p>DB connect error: " . $e->getMessage() . "</p>";
-		        }
-		    ?>
+					$stmt->execute();
+				} catch (PDOException $e) {
+					echo "DB connection error: " . $e->getMessage();
+				}
+			?>
+			<table>
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Course Name</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+						$counter = 1;
+						while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+							echo "<tr>
+									<td>{$counter}.</td>
+									<td><a href='course.php?ID={$row['ID']}'>{$row['Title']}</a></td>
+								  </tr>";
+							$counter++;
+						}
+					?>
+				</tbody>
+			</table>	
 		</main>	
 		
-		<button class="back-button" onclick="window.location.href='index.html'">Back to home</button>
+		<p><button id="backButton" onclick="window.location.href='index.html'">Back to home</button></p>
 		<p></p>
     	<footer>
     	    <p>&copy; 2024 All rights received</p>
