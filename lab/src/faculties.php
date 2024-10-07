@@ -22,6 +22,7 @@
     			    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 					$Q = "SELECT
+							  f.ID      AS FacultyID,
 							  f.Name    AS FacultyName,
 							  MIN(g.ID) AS MinGroupID,
 							  MAX(g.ID) AS MaxGroupID 
@@ -52,7 +53,7 @@
 
     			        echo "<tr>
     			                <td>{$counter}.</td>
-    			                <td>{$row['FacultyName']}</td>
+    			                <td><a href=faculty.php?ID={$row['FacultyID']}>{$row['FacultyName']}</a></td>
 								<td>[
 										<a href='group.php?ID={$minGroupID}'>{$minGroupID}</a> 
 										-

@@ -35,7 +35,7 @@
 					$stmt->execute(["CourseID" => $courseID]);
 					$row = $stmt->fetch(PDO::FETCH_ASSOC);
 					
-					echo "<h2>{$row['courseTitle']}</h3>";
+					echo "<h2>{$row['courseTitle']}</h2>";
 					echo "<p>{$row['courseDescription']}</p>";
 
 					$Q = "SELECT 
